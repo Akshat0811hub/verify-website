@@ -21,12 +21,13 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { serviceSlug: string };
-}): Metadata {
-  const service = getServiceBySlug(params.serviceSlug);
+  params: Promise<{ serviceSlug: string }>;
+}): Promise<Metadata> {
+  const { serviceSlug } = await params;
+  const service = getServiceBySlug(serviceSlug);
   if (!service) {
     return constructMetadata({ title: 'Service Not Found' });
   }
@@ -45,12 +46,13 @@ export function generateMetadata({
   });
 }
 
-export default function ServiceDynamicPage({
+export default async function ServiceDynamicPage({
   params,
 }: {
-  params: { serviceSlug: string };
+  params: Promise<{ serviceSlug: string }>;
 }) {
-  const service = getServiceBySlug(params.serviceSlug);
+  const { serviceSlug } = await params;
+  const service = getServiceBySlug(serviceSlug);
 
   if (!service) {
     notFound();

@@ -17,12 +17,13 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const industry = getIndustryBySlug(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const industry = getIndustryBySlug(slug);
   if (!industry) {
     return constructMetadata({ title: 'Industry Not Found' });
   }
@@ -38,12 +39,13 @@ export function generateMetadata({
   });
 }
 
-export default function IndustryDynamicPage({
+export default async function IndustryDynamicPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const industry = getIndustryBySlug(params.slug);
+  const { slug } = await params;
+  const industry = getIndustryBySlug(slug);
 
   if (!industry) {
     notFound();
