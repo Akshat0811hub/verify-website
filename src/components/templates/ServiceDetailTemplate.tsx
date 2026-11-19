@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import type { ServiceItem } from '@/content/services';
 import { SERVICES_DATA } from '@/content/services';
+import { SERVICE_IMAGE_MAP } from '@/components/home/ServicesBento';
 import { TiltCard } from '@/components/ui/TiltCard';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { SplitText } from '@/components/ui/SplitText';
@@ -30,9 +31,10 @@ export function ServiceDetailTemplate({ service }: ServiceDetailTemplateProps) {
     .filter((s): s is ServiceItem => Boolean(s));
 
   const heroImage =
-    service.category === 'employee'
+    SERVICE_IMAGE_MAP[service.slug] ??
+    (service.category === 'employee'
       ? 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80'
-      : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80';
+      : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80');
 
   return (
     <div className="pt-28 pb-10">
