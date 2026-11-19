@@ -1,0 +1,384 @@
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  ExternalLink,
+  Mail,
+  MapPin,
+  Phone,
+  ShieldAlert,
+} from 'lucide-react';
+import { OrbitLogo } from '@/components/ui/OrbitLogo';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { SITE_CONFIG } from '@/content/config';
+import { BUSINESS_SERVICES, EMPLOYEE_SERVICES } from '@/content/services';
+import { INDUSTRIES_DATA } from '@/content/industries';
+
+export function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    setSubscribed(true);
+    setNewsletterEmail('');
+  };
+
+  return (
+    <footer className="relative mt-20 border-t border-orbit-green/30 bg-gradient-to-b from-background-alt to-[#03040A] text-foreground overflow-hidden">
+      {/* Top gradient glow line */}
+      <div
+        className="h-1 w-full bg-gradient-to-r from-orbit-navy via-orbit-green to-orbit-cyan"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-container px-4 sm:px-6 pt-16 pb-12">
+        {/* Top Row: Brand Identity + Newsletter / Quick Portal Bar */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-14 border-b border-surface-border">
+          <div className="lg:col-span-6 space-y-4">
+            <div className="flex flex-wrap items-center gap-4">
+              <OrbitLogo size="lg" />
+              {/* Original uploaded brand mark badge */}
+              <div className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-sm border border-orbit-green/30">
+                <Image
+                  src="/orbit-verify-logo.jpg"
+                  alt="Orbit Verify Official Emblem"
+                  width={78}
+                  height={40}
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
+            </div>
+            <p className="max-w-xl text-sm text-muted leading-relaxed">
+              {SITE_CONFIG.tagline}. Fast, accurate, and legally compliant
+              employee background verification (BGV) and B2B corporate due
+              diligence for employers across India and international markets.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-orbit-green/10 px-3 py-1 font-mono text-[11px] text-orbit-green border border-orbit-green/30">
+                <span className="h-1.5 w-1.5 rounded-full bg-orbit-green animate-pulse" />
+                ISO-Aligned Processes
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-orbit-blue/10 px-3 py-1 font-mono text-[11px] text-orbit-cyan border border-orbit-cyan/30">
+                100% Consent-Gated
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-orbit-violet/10 px-3 py-1 font-mono text-[11px] text-purple-300 border border-purple-400/30">
+                Pan-India + Global Coverage
+              </span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 flex flex-col justify-between rounded-2xl glass-panel p-6 border border-orbit-green/25">
+            <div>
+              <span className="font-mono text-xs uppercase tracking-widest text-orbit-green">
+                HR &amp; Risk Intelligence Dispatch
+              </span>
+              <h3 className="mt-1 font-heading text-lg font-bold text-foreground">
+                Stay ahead of hiring fraud, DPDP compliance &amp; BGV benchmarks
+              </h3>
+            </div>
+
+            {subscribed ? (
+              <div className="mt-4 flex items-center gap-2 rounded-xl bg-orbit-green/15 p-3.5 text-sm text-orbit-green border border-orbit-green/40">
+                <CheckCircle2 className="w-5 h-5 shrink-0" />
+                <span>
+                  Subscribed! You’ll receive Orbit Verify compliance briefings.
+                </span>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubscribe}
+                className="mt-4 flex flex-col sm:flex-row gap-3"
+              >
+                <label htmlFor="footer-newsletter" className="sr-only">
+                  Work Email
+                </label>
+                <input
+                  id="footer-newsletter"
+                  type="email"
+                  required
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Enter your work email (e.g. hr@company.com)"
+                  className="flex-1 rounded-full bg-background/80 px-4 py-3 text-sm text-foreground placeholder:text-muted border border-surface-border focus:border-orbit-green focus:outline-none"
+                />
+                <MagneticButton type="submit" variant="primary" size="md">
+                  Subscribe
+                </MagneticButton>
+              </form>
+            )}
+          </div>
+        </div>
+
+        {/* Middle Columns: Employee BGV, Business BGV, Industries & Company, Contact Details */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 py-14 border-b border-surface-border">
+          {/* Column 1: Employee BGV */}
+          <div className="lg:col-span-3">
+            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-orbit-green mb-4">
+              Employee BGV Services
+            </h4>
+            <ul className="space-y-2.5 text-xs">
+              <li>
+                <Link
+                  href="/employee-bgv"
+                  className="font-semibold text-foreground hover:text-orbit-green transition-colors"
+                >
+                  All Employee BGV →
+                </Link>
+              </li>
+              {EMPLOYEE_SERVICES.slice(0, 10).map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/${service.slug}`}
+                    className="text-muted hover:text-orbit-green transition-colors"
+                  >
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 2: Business BGV */}
+          <div className="lg:col-span-3">
+            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-orbit-cyan mb-4">
+              Business Due Diligence
+            </h4>
+            <ul className="space-y-2.5 text-xs">
+              <li>
+                <Link
+                  href="/business-bgv"
+                  className="font-semibold text-foreground hover:text-orbit-cyan transition-colors"
+                >
+                  All Business BGV →
+                </Link>
+              </li>
+              {BUSINESS_SERVICES.slice(0, 10).map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/${service.slug}`}
+                    className="text-muted hover:text-orbit-cyan transition-colors"
+                  >
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Industries & Company */}
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground mb-4">
+                Industries
+              </h4>
+              <ul className="space-y-2 text-xs">
+                <li>
+                  <Link
+                    href="/industries"
+                    className="font-semibold text-orbit-green hover:underline"
+                  >
+                    All 20+ Industries →
+                  </Link>
+                </li>
+                {INDUSTRIES_DATA.slice(0, 6).map((ind) => (
+                  <li key={ind.slug}>
+                    <Link
+                      href={`/industries-1/${ind.slug}`}
+                      className="text-muted hover:text-foreground transition-colors"
+                    >
+                      {ind.shortTitle}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground mb-3">
+                Company
+              </h4>
+              <ul className="space-y-2 text-xs">
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-muted hover:text-orbit-green transition-colors"
+                  >
+                    About Orbit Verify
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="text-muted hover:text-orbit-green transition-colors"
+                  >
+                    Blog &amp; Insights
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/faq"
+                    className="text-muted hover:text-orbit-green transition-colors"
+                  >
+                    BGV FAQs
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="text-muted hover:text-orbit-green transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-muted hover:text-orbit-green transition-colors"
+                  >
+                    Contact &amp; Demo
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href={SITE_CONFIG.portalLoginUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-orbit-green font-semibold hover:underline"
+                  >
+                    <span>Client Portal Login</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Column 4: Exact Contact & Escalation Desk Details */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-orbit-green mb-4">
+              Headquarters &amp; Direct Contact
+            </h4>
+
+            <div className="rounded-2xl glass-panel p-4 space-y-3.5 text-xs border border-surface-border">
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-orbit-green shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-mono text-[10px] uppercase text-muted">
+                    Direct Verification Desk
+                  </p>
+                  <div className="mt-0.5 flex flex-wrap gap-x-3 gap-y-1 font-semibold text-foreground">
+                    <a
+                      href="tel:+919211711370"
+                      className="hover:text-orbit-green transition-colors"
+                    >
+                      +91-92117-11370
+                    </a>
+                    <span>•</span>
+                    <a
+                      href="tel:+919211711371"
+                      className="hover:text-orbit-green transition-colors"
+                    >
+                      +91-92117-11371
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Mail className="w-4 h-4 text-orbit-cyan shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-mono text-[10px] uppercase text-muted">
+                    Business Inquiries
+                  </p>
+                  <a
+                    href={`mailto:${SITE_CONFIG.contact.email}`}
+                    className="mt-0.5 block font-semibold text-foreground hover:text-orbit-cyan transition-colors"
+                  >
+                    {SITE_CONFIG.contact.email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-mono text-[10px] uppercase text-muted">
+                    Leadership Escalation Desk
+                  </p>
+                  <a
+                    href={`mailto:${SITE_CONFIG.contact.escalationEmail}`}
+                    className="mt-0.5 block font-semibold text-foreground hover:text-amber-400 transition-colors"
+                  >
+                    {SITE_CONFIG.contact.escalationEmail}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 pt-2 border-t border-surface-border">
+                <MapPin className="w-4 h-4 text-orbit-green shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-mono text-[10px] uppercase text-muted">
+                    Corporate Office
+                  </p>
+                  <p className="mt-0.5 text-foreground/90 leading-relaxed">
+                    {SITE_CONFIG.contact.operationalOffice}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-orbit-blue shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-mono text-[10px] uppercase text-muted">
+                    Registered Office
+                  </p>
+                  <p className="mt-0.5 text-muted leading-relaxed">
+                    {SITE_CONFIG.contact.registeredOffice}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Legal & Copyright Bar */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted">
+          <p className="text-center md:text-left font-mono text-[11px]">
+            {SITE_CONFIG.legalFooterLine}
+          </p>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-orbit-green transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/sitemap.xml"
+              className="hover:text-orbit-green transition-colors"
+            >
+              Sitemap
+            </Link>
+            <span>{SITE_CONFIG.copyrightLine}</span>
+          </div>
+        </div>
+
+        {/* Giant Hover-Glow "ORBIT VERIFY" Wordmark */}
+        <div
+          className="group relative mt-10 pt-4 select-none overflow-hidden text-center"
+          aria-hidden="true"
+        >
+          <p className="font-heading font-black tracking-tighter text-[clamp(3rem,11.5vw,10.5rem)] leading-none text- transparent bg-clip-text bg-gradient-to-b from-foreground/[0.08] to-transparent transition-all duration-700 group-hover:from-orbit-green/35 group-hover:via-orbit-cyan/20 group-hover:to-transparent">
+            ORBIT VERIFY
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

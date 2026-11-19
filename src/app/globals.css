@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.dark {
+  --bg-primary: #05060f;
+  --bg-secondary: #0a0d1f;
+  --bg-surface: rgba(14, 19, 48, 0.88);
+  --bg-surface-strong: rgba(11, 20, 46, 0.96);
+  --border-surface: rgba(255, 255, 255, 0.09);
+  --border-highlight: rgba(22, 193, 90, 0.35);
+  --text-primary: #e8ecf8;
+  --text-muted: #8a93b2;
+  --orbit-navy: #0b1e3d;
+  --orbit-green: #16c15a;
+  --orbit-emerald: #10b981;
+  --orbit-blue: #3b82f6;
+  --orbit-cyan: #22d3ee;
+  --orbit-violet: #8b5cf6;
+  color-scheme: dark;
+}
+
+.light {
+  --bg-primary: #f6f9fc;
+  --bg-secondary: #edf3f9;
+  --bg-surface: rgba(255, 255, 255, 0.94);
+  --bg-surface-strong: #ffffff;
+  --border-surface: rgba(11, 30, 61, 0.12);
+  --border-highlight: rgba(22, 193, 90, 0.45);
+  --text-primary: #0b1e3d;
+  --text-muted: #4b5b78;
+  --orbit-navy: #0b1e3d;
+  --orbit-green: #13a84e;
+  --orbit-emerald: #059669;
+  --orbit-blue: #2563eb;
+  --orbit-cyan: #0891b2;
+  --orbit-violet: #7c3aed;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(22, 193, 90, 0.28);
+  color: var(--text-primary);
+}
+
+/* Visible accessible focus state */
+:focus-visible {
+  outline: 2px solid #16c15a;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Fluid Typography Helpers */
+.text-fluid-hero {
+  font-size: clamp(2.35rem, 4.6vw + 0.8rem, 4.5rem);
+  line-height: 1.07;
+  letter-spacing: -0.035em;
+}
+
+.text-fluid-h2 {
+  font-size: clamp(1.85rem, 3.2vw + 0.5rem, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.text-fluid-h3 {
+  font-size: clamp(1.25rem, 1.8vw + 0.4rem, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* Orbit Gradient Text (static GPU-friendly gradient, zero continuous repaint) */
+.orbit-gradient-text {
+  background: linear-gradient(
+    120deg,
+    #16c15a 0%,
+    #22d3ee 45%,
+    #3b82f6 85%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Lightweight Surface System (no heavy multi-card backdrop-filter lag) */
+.glass-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-surface);
+}
+
+.glass-panel-strong {
+  background: var(--bg-surface-strong);
+  border: 1px solid var(--border-surface);
+}
+
+/* Radar Grid Background */
+.bg-radar-grid {
+  background-size: 48px 48px;
+  background-image: linear-gradient(
+      to right,
+      rgba(138, 147, 178, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(138, 147, 178, 0.05) 1px, transparent 1px);
+}
+
+.bg-dot-matrix {
+  background-image: radial-gradient(
+    rgba(138, 147, 178, 0.14) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Marquee Edge Masks */
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(138, 147, 178, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(22, 193, 90, 0.6);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
