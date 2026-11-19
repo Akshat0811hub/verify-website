@@ -19,16 +19,17 @@ interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function TiltCard({
   children,
   className,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   maxTilt,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   scale,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   cursorLabel,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   glowColor,
   ...props
 }: TiltCardProps) {
+  void maxTilt;
+  void scale;
+  void cursorLabel;
+  void glowColor;
+
   return (
     <div
       className={cn(
