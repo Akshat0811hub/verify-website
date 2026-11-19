@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  ArrowUpRight,
   CheckCircle2,
   ExternalLink,
   Mail,
@@ -30,64 +29,58 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative mt-20 border-t border-orbit-green/30 bg-gradient-to-b from-background-alt to-[#03040A] text-foreground overflow-hidden">
-      {/* Top gradient glow line */}
+    <footer className="relative mt-16 border-t border-surface-border bg-orbit-navy text-white overflow-hidden">
       <div
-        className="h-1 w-full bg-gradient-to-r from-orbit-navy via-orbit-green to-orbit-cyan"
+        className="h-1 w-full bg-gradient-to-r from-orbit-green via-orbit-cyan to-orbit-blue"
         aria-hidden="true"
       />
 
       <div className="mx-auto max-w-container px-4 sm:px-6 pt-16 pb-12">
-        {/* Top Row: Brand Identity + Newsletter / Quick Portal Bar */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-14 border-b border-surface-border">
+        {/* Top Row: Brand Identity + Newsletter */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
           <div className="lg:col-span-6 space-y-4">
             <div className="flex flex-wrap items-center gap-4">
-              <OrbitLogo size="lg" />
-              {/* Original uploaded brand mark badge */}
-              <div className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-1.5 shadow-sm border border-orbit-green/30">
+              <div className="rounded-xl bg-white px-3 py-1.5 shadow-sm">
                 <Image
                   src="/orbit-verify-logo.jpg"
-                  alt="Orbit Verify Official Emblem"
-                  width={78}
-                  height={40}
-                  className="h-8 w-auto object-contain"
+                  alt="Orbit Verify Official Logo"
+                  width={110}
+                  height={52}
+                  className="h-10 w-auto object-contain"
                 />
               </div>
+              <div>
+                <p className="font-heading text-xl font-extrabold text-white">
+                  Orbit <span className="text-orbit-green">Verify</span>
+                </p>
+                <p className="text-xs text-slate-300">
+                  Operated by {SITE_CONFIG.legalEntity}
+                </p>
+              </div>
             </div>
-            <p className="max-w-xl text-sm text-muted leading-relaxed">
-              {SITE_CONFIG.tagline}. Fast, accurate, and legally compliant
-              employee background verification (BGV) and B2B corporate due
-              diligence for employers across India and international markets.
+            <p className="max-w-xl text-sm text-slate-300 text-justify leading-relaxed">
+              {SITE_CONFIG.tagline}. Orbit Verify provides fast, accurate, and
+              legally compliant employee background verification (BGV) and
+              corporate due diligence services across India and international
+              markets.
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-orbit-green/10 px-3 py-1 font-mono text-[11px] text-orbit-green border border-orbit-green/30">
-                <span className="h-1.5 w-1.5 rounded-full bg-orbit-green animate-pulse" />
-                ISO-Aligned Processes
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-orbit-blue/10 px-3 py-1 font-mono text-[11px] text-orbit-cyan border border-orbit-cyan/30">
-                100% Consent-Gated
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-orbit-violet/10 px-3 py-1 font-mono text-[11px] text-purple-300 border border-purple-400/30">
-                Pan-India + Global Coverage
-              </span>
-            </div>
           </div>
 
-          <div className="lg:col-span-6 flex flex-col justify-between rounded-2xl glass-panel p-6 border border-orbit-green/25">
+          <div className="lg:col-span-6 flex flex-col justify-between rounded-2xl bg-white/5 p-6 border border-white/10">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-orbit-green">
-                HR &amp; Risk Intelligence Dispatch
+              <span className="text-xs font-semibold uppercase tracking-wider text-orbit-green">
+                HR &amp; Compliance Updates
               </span>
-              <h3 className="mt-1 font-heading text-lg font-bold text-foreground">
-                Stay ahead of hiring fraud, DPDP compliance &amp; BGV benchmarks
+              <h3 className="mt-1 font-heading text-lg font-bold text-white">
+                Receive background verification guides &amp; compliance updates
               </h3>
             </div>
 
             {subscribed ? (
-              <div className="mt-4 flex items-center gap-2 rounded-xl bg-orbit-green/15 p-3.5 text-sm text-orbit-green border border-orbit-green/40">
+              <div className="mt-4 flex items-center gap-2 rounded-xl bg-orbit-green/20 p-3.5 text-sm text-orbit-green border border-orbit-green/40">
                 <CheckCircle2 className="w-5 h-5 shrink-0" />
                 <span>
-                  Subscribed! You’ll receive Orbit Verify compliance briefings.
+                  Thank you for subscribing to Orbit Verify updates!
                 </span>
               </div>
             ) : (
@@ -105,7 +98,7 @@ export function Footer() {
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Enter your work email (e.g. hr@company.com)"
-                  className="flex-1 rounded-full bg-background/80 px-4 py-3 text-sm text-foreground placeholder:text-muted border border-surface-border focus:border-orbit-green focus:outline-none"
+                  className="flex-1 rounded-full bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-400 border border-white/15 focus:border-orbit-green focus:outline-none"
                 />
                 <MagneticButton type="submit" variant="primary" size="md">
                   Subscribe
@@ -115,8 +108,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Middle Columns: Employee BGV, Business BGV, Industries & Company, Contact Details */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 py-14 border-b border-surface-border">
+        {/* Middle Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 py-12 border-b border-white/10">
           {/* Column 1: Employee BGV */}
           <div className="lg:col-span-3">
             <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-orbit-green mb-4">
@@ -126,7 +119,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/employee-bgv"
-                  className="font-semibold text-foreground hover:text-orbit-green transition-colors"
+                  className="font-semibold text-white hover:text-orbit-green transition-colors"
                 >
                   All Employee BGV →
                 </Link>
@@ -135,7 +128,7 @@ export function Footer() {
                 <li key={service.slug}>
                   <Link
                     href={`/${service.slug}`}
-                    className="text-muted hover:text-orbit-green transition-colors"
+                    className="text-slate-300 hover:text-orbit-green transition-colors"
                   >
                     {service.title}
                   </Link>
@@ -146,14 +139,14 @@ export function Footer() {
 
           {/* Column 2: Business BGV */}
           <div className="lg:col-span-3">
-            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-orbit-cyan mb-4">
+            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-orbit-green mb-4">
               Business Due Diligence
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <Link
                   href="/business-bgv"
-                  className="font-semibold text-foreground hover:text-orbit-cyan transition-colors"
+                  className="font-semibold text-white hover:text-orbit-green transition-colors"
                 >
                   All Business BGV →
                 </Link>
@@ -162,7 +155,7 @@ export function Footer() {
                 <li key={service.slug}>
                   <Link
                     href={`/${service.slug}`}
-                    className="text-muted hover:text-orbit-cyan transition-colors"
+                    className="text-slate-300 hover:text-orbit-green transition-colors"
                   >
                     {service.title}
                   </Link>
@@ -174,7 +167,7 @@ export function Footer() {
           {/* Column 3: Industries & Company */}
           <div className="lg:col-span-2 space-y-8">
             <div>
-              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground mb-4">
+              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-white mb-4">
                 Industries
               </h4>
               <ul className="space-y-2 text-xs">
@@ -190,7 +183,7 @@ export function Footer() {
                   <li key={ind.slug}>
                     <Link
                       href={`/industries-1/${ind.slug}`}
-                      className="text-muted hover:text-foreground transition-colors"
+                      className="text-slate-300 hover:text-white transition-colors"
                     >
                       {ind.shortTitle}
                     </Link>
@@ -200,14 +193,14 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-foreground mb-3">
+              <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-white mb-3">
                 Company
               </h4>
               <ul className="space-y-2 text-xs">
                 <li>
                   <Link
                     href="/about"
-                    className="text-muted hover:text-orbit-green transition-colors"
+                    className="text-slate-300 hover:text-orbit-green transition-colors"
                   >
                     About Orbit Verify
                   </Link>
@@ -215,7 +208,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/blog"
-                    className="text-muted hover:text-orbit-green transition-colors"
+                    className="text-slate-300 hover:text-orbit-green transition-colors"
                   >
                     Blog &amp; Insights
                   </Link>
@@ -223,7 +216,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/faq"
-                    className="text-muted hover:text-orbit-green transition-colors"
+                    className="text-slate-300 hover:text-orbit-green transition-colors"
                   >
                     BGV FAQs
                   </Link>
@@ -231,7 +224,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/privacy-policy"
-                    className="text-muted hover:text-orbit-green transition-colors"
+                    className="text-slate-300 hover:text-orbit-green transition-colors"
                   >
                     Privacy Policy
                   </Link>
@@ -239,9 +232,9 @@ export function Footer() {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-muted hover:text-orbit-green transition-colors"
+                    className="text-slate-300 hover:text-orbit-green transition-colors"
                   >
-                    Contact &amp; Demo
+                    Contact Us
                   </Link>
                 </li>
                 <li>
@@ -259,20 +252,20 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 4: Exact Contact & Escalation Desk Details */}
+          {/* Column 4: Exact Contact Details */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-orbit-green mb-4">
-              Headquarters &amp; Direct Contact
+              New Delhi Headquarters &amp; Contact
             </h4>
 
-            <div className="rounded-2xl glass-panel p-4 space-y-3.5 text-xs border border-surface-border">
+            <div className="rounded-2xl bg-white/5 p-5 space-y-3.5 text-xs border border-white/10">
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-orbit-green shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-mono text-[10px] uppercase text-muted">
-                    Direct Verification Desk
+                  <p className="text-[11px] text-slate-400 text-left">
+                    Phone Numbers
                   </p>
-                  <div className="mt-0.5 flex flex-wrap gap-x-3 gap-y-1 font-semibold text-foreground">
+                  <div className="mt-0.5 flex flex-wrap gap-x-3 gap-y-1 font-semibold text-white">
                     <a
                       href="tel:+919211711370"
                       className="hover:text-orbit-green transition-colors"
@@ -291,14 +284,14 @@ export function Footer() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-orbit-cyan shrink-0 mt-0.5" />
+                <Mail className="w-4 h-4 text-orbit-green shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-mono text-[10px] uppercase text-muted">
-                    Business Inquiries
+                  <p className="text-[11px] text-slate-400 text-left">
+                    Email Address
                   </p>
                   <a
                     href={`mailto:${SITE_CONFIG.contact.email}`}
-                    className="mt-0.5 block font-semibold text-foreground hover:text-orbit-cyan transition-colors"
+                    className="mt-0.5 block font-semibold text-white hover:text-orbit-green transition-colors"
                   >
                     {SITE_CONFIG.contact.email}
                   </a>
@@ -308,37 +301,37 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-mono text-[10px] uppercase text-muted">
-                    Leadership Escalation Desk
+                  <p className="text-[11px] text-slate-400 text-left">
+                    Escalation Desk
                   </p>
                   <a
                     href={`mailto:${SITE_CONFIG.contact.escalationEmail}`}
-                    className="mt-0.5 block font-semibold text-foreground hover:text-amber-400 transition-colors"
+                    className="mt-0.5 block font-semibold text-white hover:text-amber-400 transition-colors"
                   >
                     {SITE_CONFIG.contact.escalationEmail}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 pt-2 border-t border-surface-border">
+              <div className="flex items-start gap-3 pt-2 border-t border-white/10">
                 <MapPin className="w-4 h-4 text-orbit-green shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-mono text-[10px] uppercase text-muted">
+                  <p className="text-[11px] text-slate-400 text-left">
                     Corporate Office
                   </p>
-                  <p className="mt-0.5 text-foreground/90 leading-relaxed">
+                  <p className="mt-0.5 text-slate-200 leading-relaxed text-left">
                     {SITE_CONFIG.contact.operationalOffice}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-orbit-blue shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-mono text-[10px] uppercase text-muted">
+                  <p className="text-[11px] text-slate-400 text-left">
                     Registered Office
                   </p>
-                  <p className="mt-0.5 text-muted leading-relaxed">
+                  <p className="mt-0.5 text-slate-300 leading-relaxed text-left">
                     {SITE_CONFIG.contact.registeredOffice}
                   </p>
                 </div>
@@ -348,10 +341,8 @@ export function Footer() {
         </div>
 
         {/* Legal & Copyright Bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted">
-          <p className="text-center md:text-left font-mono text-[11px]">
-            {SITE_CONFIG.legalFooterLine}
-          </p>
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <p className="text-center md:text-left">{SITE_CONFIG.legalFooterLine}</p>
           <div className="flex items-center gap-6">
             <Link
               href="/privacy-policy"
@@ -367,16 +358,6 @@ export function Footer() {
             </Link>
             <span>{SITE_CONFIG.copyrightLine}</span>
           </div>
-        </div>
-
-        {/* Giant Hover-Glow "ORBIT VERIFY" Wordmark */}
-        <div
-          className="group relative mt-10 pt-4 select-none overflow-hidden text-center"
-          aria-hidden="true"
-        >
-          <p className="font-heading font-black tracking-tighter text-[clamp(3rem,11.5vw,10.5rem)] leading-none text- transparent bg-clip-text bg-gradient-to-b from-foreground/[0.08] to-transparent transition-all duration-700 group-hover:from-orbit-green/35 group-hover:via-orbit-cyan/20 group-hover:to-transparent">
-            ORBIT VERIFY
-          </p>
         </div>
       </div>
     </footer>

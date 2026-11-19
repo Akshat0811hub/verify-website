@@ -53,10 +53,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`light ${plusJakarta.variable} ${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="font-sans antialiased selection:bg-orbit-green/30 selection:text-foreground">
+      <body className="font-sans antialiased selection:bg-orbit-green/20 selection:text-foreground">
         <JsonLd data={[getOrganizationSchema(), getLocalBusinessSchema()]} />
         <ThemeProvider>
           <SmoothScroll>

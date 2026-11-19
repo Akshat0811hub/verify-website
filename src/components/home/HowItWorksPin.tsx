@@ -15,84 +15,79 @@ import { cn } from '@/lib/utils';
 
 const TIMELINE_STEPS = [
   {
-    step: '01',
-    title: 'Request Initiated',
-    subtitle: 'Portal, Bulk CSV, or HRMS API',
+    step: 'Step 1',
+    title: 'Initiate Verification Request',
+    subtitle: 'Client Portal, Bulk Excel Upload, or API',
     description:
-      'Recruiters or procurement leads trigger a verification request in seconds—selecting a role-specific BGV package (Fresher, Lateral, Executive, or Vendor KYB).',
+      'HR and procurement teams can initiate single or bulk verification requests in seconds through the Orbit Verify Client Portal, selecting role-specific screening packages tailored for freshers, lateral hires, executives, or business vendors.',
     icon: Send,
-    previewTitle: 'NEW CASE TRIGGERED // #OV-8841',
-    previewChip: 'SLA Timer Started • 00:00:04',
-    previewRows: [
-      { label: 'Candidate', value: 'Rohan Mehta (Sr. DevOps)' },
-      { label: 'Package', value: 'Lateral Tech 360° (6 Checks)' },
-      { label: 'Invite Channel', value: 'SMS + WhatsApp + Email Sent ✓' },
+    image:
+      'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80',
+    highlights: [
+      'Instant case creation via Web Portal or Bulk Excel sheet',
+      'Role-wise customized BGV packages (Fresher, Lateral, CXO, Vendor)',
+      'Automated email & SMS notification sent to the candidate',
     ],
-    progress: 20,
   },
   {
-    step: '02',
-    title: 'Candidate Consent & Document Upload',
-    subtitle: 'Mobile-First Secure Link',
+    step: 'Step 2',
+    title: 'Candidate Consent & Document Collection',
+    subtitle: 'Secure Mobile & Web Upload Link',
     description:
-      'Candidate opens a white-labeled encrypted link on their phone, signs digital DPDP-compliant authorization, captures a live selfie, and uploads documents with instant OCR validation.',
+      'Every background check at Orbit Verify begins with explicit candidate authorization. Candidates use a secure digital link to sign their consent form and upload required identity, academic, and employment documents.',
     icon: Smartphone,
-    previewTitle: 'CANDIDATE CONSENT CAPTURED',
-    previewChip: 'E-Sign + Geo-IP Timestamped ✓',
-    previewRows: [
-      { label: 'Digital Consent', value: 'Signed • SHA-256 Hash Locked' },
-      { label: 'ID & Address Proofs', value: 'PAN, Aadhaar, Degree Uploaded' },
-      { label: 'Live Geo-Location', value: '28.6139° N, 77.2090° E (Verified)' },
+    image:
+      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
+    highlights: [
+      '100% consent-based process aligned with Indian privacy laws',
+      'Easy mobile document upload with zero app installation',
+      'Automated document completeness check to avoid delays',
     ],
-    progress: 40,
   },
   {
-    step: '03',
-    title: 'Multi-Track Source Verification',
-    subtitle: 'APIs, Registrars, HR & Field Network',
+    step: 'Step 3',
+    title: 'Primary-Source & Field Verification',
+    subtitle: 'Registrars, Past Employers, Courts & Physical Visits',
     description:
-      'Parallel tracks execute simultaneously: government ID & court databases query via API while analysts contact university registrars, past HR departments, and dispatch pan-India field executives.',
+      'Our verification specialists validate credentials directly from primary sources—contacting university registrars, previous HR departments, official government and court databases, and dispatching field executives for physical address visits.',
     icon: Database,
-    previewTitle: 'PARALLEL SOURCE QUERIES ACTIVE',
-    previewChip: '6/6 Verification Channels Running',
-    previewRows: [
-      { label: 'Identity & Court API', value: 'Cleared across 3,200+ Courts ✓' },
-      { label: 'University Registrar', value: 'Roll #190482 Confirmed by Desk ✓' },
-      { label: 'Past Employer HR', value: 'Tenure & Exit Verified via Official HR ✓' },
+    image:
+      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
+    highlights: [
+      'Direct verification with university registrars and past HR teams',
+      'Pan-India physical doorstep address and office inspections',
+      'District, High Court, Supreme Court, and global watchlist checks',
     ],
-    progress: 65,
   },
   {
-    step: '04',
-    title: 'Dual-Layer Quality Review',
-    subtitle: 'Forensic Audit & Discrepancy Grading',
+    step: 'Step 4',
+    title: 'Two-Stage Quality & Compliance Audit',
+    subtitle: 'Discrepancy Review & Evidence Verification',
     description:
-      'Every source response, GPS doorstep photo, and document annexure undergoes a strict two-stage QA audit to eliminate false positives and apply Red / Amber / Green severity grading.',
+      'Before any report is finalized, our dedicated Quality Assurance desk reviews every source proof, geo-tagged photograph, and court record to ensure accuracy, eliminate false positives, and assign clear Red, Amber, or Green grading.',
     icon: ShieldCheck,
-    previewTitle: 'DUAL-ANALYST QA AUDIT',
-    previewChip: '99.4% Accuracy Gate • Passed ✓',
-    previewRows: [
-      { label: 'Document Forensics', value: 'Zero PDF Metadata Tampering' },
-      { label: 'Annexure Evidence', value: '6 Primary Source Proofs Attached' },
-      { label: 'Final Severity Status', value: 'GREEN — Clear for Onboarding' },
+    image:
+      'https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=900&q=80',
+    highlights: [
+      'Dual-analyst verification of every attached proof and remark',
+      'Clear Red / Amber / Green severity classification',
+      'Strict adherence to client SLA and compliance guidelines',
     ],
-    progress: 88,
   },
   {
-    step: '05',
+    step: 'Step 5',
     title: 'Audit-Ready Report Delivered',
-    subtitle: 'Instant Portal Alert, PDF Dossier & Webhook',
+    subtitle: 'Downloadable PDF Dossier with Proofs',
     description:
-      'Receive an instant notification and downloadable, watermarked PDF dossier complete with timestamped annexures, verifier logs, and executive summary.',
+      'Once verified, the consolidated background screening report is published on your Orbit Verify dashboard with all supporting annexures, timestamps, and verification certificates ready for HR and compliance audits.',
     icon: FileCheck2,
-    previewTitle: 'VERIFIED DOSSIER PUBLISHED',
-    previewChip: 'Completed in 22 Hours • SLA Met ✓',
-    previewRows: [
-      { label: 'Overall Verdict', value: 'VERIFIED GREEN (100% Score)' },
-      { label: 'Audit Annexures', value: 'ID, Court, HR, Degree & GPS Proofs' },
-      { label: 'Delivery', value: 'Portal PDF + HRMS Webhook Synced ✓' },
+    image:
+      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=900&q=80',
+    highlights: [
+      'Consolidated PDF report with complete proof annexures',
+      ' typical 24–72 hour turnaround for digital & priority checks',
+      'Dedicated New Delhi account support and escalation desk',
     ],
-    progress: 100,
   },
 ];
 
@@ -103,186 +98,105 @@ export function HowItWorksPin() {
   return (
     <section
       aria-labelledby="how-it-works-heading"
-      className="relative py-20 lg:py-24 bg-background-alt/30 border-y border-surface-border"
+      className="relative py-16 lg:py-24 bg-background-alt/50 border-y border-surface-border"
     >
       <div className="mx-auto max-w-container px-4 sm:px-6">
         {/* Header */}
-        <div className="max-w-2xl space-y-2 mb-10">
-          <ScrambleText text="HOW IT WORKS • 5-STAGE VERIFICATION PIPELINE" />
+        <div className="max-w-2xl space-y-2 mb-12">
+          <ScrambleText text="Simple 5-Step Verification Process" />
           <SplitText
-            text="From Request to Audit-Ready Report in 5 Seamless Steps."
-            highlightWords={['Audit-Ready', 'Seamless']}
+            text="How Orbit Verify Delivers Accurate Reports on Time"
+            highlightWords={['Accurate', 'Reports']}
             className="text-fluid-h2 text-foreground"
           />
+          <p className="text-sm sm:text-base text-muted text-justify leading-relaxed">
+            Our streamlined verification process removes manual follow-ups for
+            your HR team while ensuring every candidate and business partner is
+            thoroughly vetted.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left: Vertical Timeline with Glowing Progress Line */}
-          <div className="lg:col-span-6 relative pl-8">
-            <div
-              className="absolute left-3 top-3 bottom-3 w-[2px] bg-surface-border rounded-full"
-              aria-hidden="true"
-            />
-            <div
-              style={{
-                height: `${((activeStep + 1) / TIMELINE_STEPS.length) * 100}%`,
-              }}
-              className="absolute left-3 top-3 w-[2px] bg-gradient-to-b from-orbit-green via-orbit-cyan to-orbit-blue transition-all duration-300 rounded-full"
-              aria-hidden="true"
-            />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* Left: Clean Step Selector */}
+          <div className="lg:col-span-6 space-y-3">
+            {TIMELINE_STEPS.map((item, idx) => {
+              const Icon = item.icon;
+              const isActive = idx === activeStep;
 
-            <div className="space-y-3">
-              {TIMELINE_STEPS.map((item, idx) => {
-                const Icon = item.icon;
-                const isActive = idx === activeStep;
-                const isCompleted = idx < activeStep;
-
-                return (
-                  <button
-                    key={item.step}
-                    type="button"
-                    onClick={() => setActiveStep(idx)}
-                    onMouseEnter={() => setActiveStep(idx)}
-                    className={cn(
-                      'group relative w-full text-left rounded-2xl p-4 transition-colors duration-200 border',
-                      isActive
-                        ? 'glass-panel-strong border-orbit-green/50'
-                        : 'bg-transparent border-transparent hover:bg-surface/40'
-                    )}
-                  >
-                    <span
+              return (
+                <button
+                  key={item.step}
+                  type="button"
+                  onClick={() => setActiveStep(idx)}
+                  className={cn(
+                    'w-full text-left rounded-2xl p-5 transition-all border',
+                    isActive
+                      ? 'glass-panel-strong border-orbit-green shadow-md'
+                      : 'glass-panel border-surface-border hover:border-orbit-green/40'
+                  )}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
                       className={cn(
-                        'absolute -left-[29px] top-6 flex h-5 w-5 items-center justify-center rounded-full border text-[10px] font-mono transition-transform',
+                        'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border transition-colors',
                         isActive
-                          ? 'bg-orbit-green border-white text-orbit-deep scale-110'
-                          : isCompleted
-                          ? 'bg-orbit-green/30 border-orbit-green text-orbit-green'
-                          : 'bg-background border-surface-border text-muted'
+                          ? 'bg-orbit-green text-white border-orbit-green'
+                          : 'bg-orbit-green/10 text-orbit-green border-orbit-green/25'
                       )}
                     >
-                      {isCompleted ? '✓' : idx + 1}
-                    </span>
-
-                    <div className="flex items-start gap-3.5">
-                      <div
-                        className={cn(
-                          'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-colors',
-                          isActive
-                            ? 'bg-orbit-green text-orbit-deep border-orbit-green'
-                            : 'bg-orbit-green/10 text-orbit-green border-orbit-green/25'
-                        )}
-                      >
-                        <Icon className="w-5 h-5" />
-                      </div>
-
-                      <div className="min-w-0 flex-1">
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-orbit-green">
-                          STEP {item.step} • {item.subtitle}
-                        </span>
-                        <h3 className="mt-0.5 font-heading text-base sm:text-lg font-bold text-foreground">
-                          {item.title}
-                        </h3>
-                        {isActive && (
-                          <p className="mt-1.5 text-xs sm:text-sm text-muted leading-relaxed">
-                            {item.description}
-                          </p>
-                        )}
-                      </div>
+                      <Icon className="w-5 h-5" />
                     </div>
-                  </button>
-                );
-              })}
-            </div>
+
+                    <div className="min-w-0 flex-1">
+                      <span className="text-xs font-semibold text-orbit-green">
+                        {item.step} • {item.subtitle}
+                      </span>
+                      <h3 className="mt-0.5 font-heading text-base sm:text-lg font-bold text-foreground">
+                        {item.title}
+                      </h3>
+                      {isActive && (
+                        <p className="mt-2 text-xs sm:text-sm text-muted text-justify leading-relaxed">
+                          {item.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Right: Dynamic Interactive Phone / Dashboard Mockup Preview */}
+          {/* Right: Visual Image & Key Highlights Card */}
           <div className="lg:col-span-6">
-            <div className="relative rounded-3xl glass-panel-strong p-6 sm:p-8 border border-orbit-green/35 shadow-xl overflow-hidden">
-              <div className="flex items-center justify-between pb-4 mb-6 border-b border-surface-border">
-                <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-orbit-green" />
-                  <span className="ml-2 font-mono text-[11px] text-muted">
-                    orbit-verify://pipeline/stage-0{activeStep + 1}
-                  </span>
+            <div className="rounded-3xl glass-panel-strong border border-surface-border shadow-xl overflow-hidden">
+              <div className="relative h-64 sm:h-72 w-full overflow-hidden">
+                <img
+                  src={current.image}
+                  alt={current.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4 rounded-full bg-orbit-navy/90 px-4 py-1.5 text-xs font-semibold text-white">
+                  {current.step}: {current.title}
                 </div>
-                <span className="rounded-full bg-orbit-green/15 px-3 py-0.5 font-mono text-[10px] font-bold text-orbit-green border border-orbit-green/30">
-                  {current.progress}% COMPLETE
-                </span>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-center justify-between rounded-2xl bg-gradient-to-r from-orbit-navy via-[#102652] to-orbit-green/25 p-5 text-white border border-orbit-green/40">
-                  <div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-orbit-green">
-                      {current.previewTitle}
-                    </p>
-                    <h4 className="mt-1 font-heading text-xl font-bold">
-                      {current.title}
-                    </h4>
-                    <p className="mt-1 font-mono text-xs text-orbit-cyan">
-                      {current.previewChip}
-                    </p>
-                  </div>
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-orbit-green/20 border border-orbit-green/40 text-orbit-green">
-                    <current.icon className="w-7 h-7" />
-                  </div>
-                </div>
+              <div className="p-6 sm:p-8 space-y-4">
+                <h4 className="font-heading text-xl font-bold text-foreground">
+                  {current.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-muted text-justify leading-relaxed">
+                  {current.description}
+                </p>
 
-                <div className="space-y-3">
-                  {current.previewRows.map((row) => (
+                <div className="pt-3 border-t border-surface-border space-y-2.5">
+                  {current.highlights.map((pt) => (
                     <div
-                      key={row.label}
-                      className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 rounded-xl bg-background/60 p-3.5 border border-surface-border"
+                      key={pt}
+                      className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground"
                     >
-                      <span className="font-mono text-xs text-muted">
-                        {row.label}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-foreground">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-orbit-green shrink-0" />
-                        {row.value}
-                      </span>
+                      <CheckCircle2 className="w-4 h-4 text-orbit-green shrink-0 mt-0.5" />
+                      <span>{pt}</span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="pt-2">
-                  <div className="flex items-center justify-between text-xs font-mono mb-2">
-                    <span className="text-muted">
-                      ORBIT VERIFICATION TELEMETRY
-                    </span>
-                    <span className="text-orbit-green font-bold">
-                      STAGE {activeStep + 1} OF 5
-                    </span>
-                  </div>
-                  <div className="h-2.5 w-full rounded-full bg-background overflow-hidden p-0.5 border border-surface-border">
-                    <div
-                      style={{ width: `${current.progress}%` }}
-                      className="h-full rounded-full bg-gradient-to-r from-orbit-green via-orbit-cyan to-orbit-blue transition-all duration-300"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-surface-border flex items-center justify-between">
-                <span className="font-mono text-[10px] text-muted">
-                  Hover or click any stage to inspect workflow
-                </span>
-                <div className="flex items-center gap-1.5">
-                  {TIMELINE_STEPS.map((s, idx) => (
-                    <button
-                      key={s.step}
-                      type="button"
-                      aria-label={`Go to step ${idx + 1}`}
-                      onClick={() => setActiveStep(idx)}
-                      className={cn(
-                        'h-2 rounded-full transition-all',
-                        idx === activeStep
-                          ? 'w-6 bg-orbit-green'
-                          : 'w-2 bg-muted/40 hover:bg-muted'
-                      )}
-                    />
                   ))}
                 </div>
               </div>

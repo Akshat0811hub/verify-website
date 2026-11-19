@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light';
+type Theme = 'light' | 'dark';
 
 interface ThemeContextType {
   theme: Theme;
@@ -10,16 +10,16 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'dark',
+  theme: 'light',
   toggleTheme: () => {},
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    const stored = window.localStorage.getItem('orbit-theme') as Theme | null;
-    const initial = stored === 'light' ? 'light' : 'dark';
+    const stored = window.localStorage.getItem('orbit-theme-v2') as Theme | null;
+    const initial = stored === 'dark' ? 'dark' : 'light';
     setTheme(initial);
     document.documentElement.classList.remove('dark', 'light');
     document.documentElement.classList.add(initial);
@@ -27,8 +27,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const toggleTheme = () => {
     setTheme((prev) => {
-      const next = prev === 'dark' ? 'light' : 'dark';
-      window.localStorage.setItem('orbit-theme', next);
+      const next = prev === 'light' ? 'dark' : 'light';
+      window.localStorage.setItem('orbit-theme-v2', next);
       document.documentElement.classList.remove('dark', 'light');
       document.documentElement.classList.add(next);
       return next;

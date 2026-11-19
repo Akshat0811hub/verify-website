@@ -9,18 +9,21 @@ interface ScrambleTextProps {
 }
 
 /**
- * Lightweight section tag pill (zero setInterval re-renders during scroll).
+ * Clean, calm corporate section badge (replaces noisy tech/radar tags).
  */
 export function ScrambleText({ text, className }: ScrambleTextProps) {
+  // Strip noisy tech separators like "//" or "•" for a calmer corporate label
+  const cleanLabel = text.split('•')[0].replace(/\/\//g, '').trim();
+
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-orbit-green',
+        'inline-flex items-center gap-2 rounded-full bg-orbit-green/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-orbit-green border border-orbit-green/25',
         className
       )}
     >
       <span className="h-1.5 w-1.5 rounded-full bg-orbit-green" />
-      <span>{text}</span>
+      <span>{cleanLabel}</span>
     </span>
   );
 }
